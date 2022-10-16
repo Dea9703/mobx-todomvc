@@ -1,9 +1,12 @@
 import './index.css'
 import { useStore } from '../store'
 import { observer } from 'mobx-react-lite'
+import { useState } from 'react'
+import { v4 as uuid } from 'uuid'
 
 function Task () {
   const { taskStore } = useStore()
+  const [taskValue, setTaskValue] = useState('')
 
   function onChange (e, id) {
     // console.log(e, id)
@@ -19,6 +22,19 @@ function Task () {
     taskStore.removeTask(id)
   }
 
+  function addTask (e) {
+    // console.log(e)
+    if (e.code === 'Enter') {
+      taskStore.addTask({
+        id: uuid(),
+        name: taskValue,
+        isDone: false
+      })
+      // 添加成功后清空input输入框
+      setTaskValue('')
+    }
+  }
+
   return (
     <section className="todoapp">
       <header className="header">
@@ -28,6 +44,9 @@ function Task () {
           autoFocus
           autoComplete="off"
           placeholder="What needs to be done?"
+          value={taskValue}
+          onChange={(e) => setTaskValue(e.target.value)}
+          onKeyDown={addTask}
         />
       </header>
       <section className="main">
