@@ -42,5 +42,15 @@ class TaskStore {
   addTask = (task) => {
     this.list.push(task)
   }
+
+  // 计算属性：list总数量
+  get totalCount () {
+    return this.list.length
+  }
+
+  // 计算属性：完成数量
+  get doneCount () {
+    return this.list.filter(item => item.isDone).length
+  }
 }
 export default TaskStore

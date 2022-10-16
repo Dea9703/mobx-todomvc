@@ -85,7 +85,7 @@ function Task () {
       </section>
       <footer className="footer">
         <span className="todo-count">
-          任务总数: {10} 已完成: {1}
+          任务总数: {taskStore.totalCount} 已完成: {taskStore.doneCount}
         </span>
       </footer>
     </section>
