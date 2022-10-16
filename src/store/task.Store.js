@@ -5,16 +5,21 @@ class TaskStore {
     {
       id: 1,
       name: '学习react',
-      isDone: false
+      isDone: true
     },
     {
       id: 2,
       name: '搞定mobx',
-      isDone: true
+      isDone: false
     }
   ]
   constructor() {
     makeAutoObservable(this)
+  }
+
+  checkItem = (isDone, id) => {
+    const item = this.list.find(item => item.id === id)
+    item.isDone = isDone
   }
 }
 export default TaskStore
