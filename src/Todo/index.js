@@ -15,6 +15,10 @@ function Task () {
     taskStore.allCheck(e.target.checked)
   }
 
+  function removeTask (id) {
+    taskStore.removeTask(id)
+  }
+
   return (
     <section className="todoapp">
       <header className="header">
@@ -54,7 +58,7 @@ function Task () {
                   readOnly
                 />
                 <label htmlFor={item.id}>{item.name}</label>
-                <button className="destroy"></button>
+                <button className="destroy" onClick={() => removeTask(item.id)}></button>
               </div>
             </li>
           )}
