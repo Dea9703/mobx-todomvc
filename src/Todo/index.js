@@ -10,6 +10,11 @@ function Task () {
     taskStore.singleCheck(e.target.checked, id)
   }
 
+  function allChange (e) {
+    // console.log(e.target.checked)
+    taskStore.allCheck(e.target.checked)
+  }
+
   return (
     <section className="todoapp">
       <header className="header">
@@ -27,9 +32,12 @@ function Task () {
           id="toggle-all"
           className="toggle-all"
           type="checkbox"
+          onChange={allChange}
+          checked={taskStore.isAll}
+          readOnly
         />
         {/* 全选 */}
-        <label htmlFor="toggle-all"></label>
+        <label htmlFor="toggle-all" />
         <ul className="todo-list">
           {/* 列表区域 */}
           {taskStore.list.map(item =>
@@ -42,7 +50,8 @@ function Task () {
                   className="toggle"
                   type="checkbox"
                   onClick={(e) => onChange(e, item.id)}
-                  defaultChecked={item.isDone}
+                  checked={item.isDone}
+                  readOnly
                 />
                 <label htmlFor={item.id}>{item.name}</label>
                 <button className="destroy"></button>

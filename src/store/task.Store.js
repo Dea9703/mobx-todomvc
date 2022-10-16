@@ -18,9 +18,18 @@ class TaskStore {
   }
 
   // 单选操作
-  singleCheck = (isDone, id) => {
+  singleCheck = (isChecked, id) => {
     const item = this.list.find(item => item.id === id)
-    item.isDone = isDone
+    item.isDone = isChecked
+  }
+
+  // 全选操作
+  allCheck = (isChecked) => {
+    this.list.forEach(item => item.isDone = isChecked)
+  }
+
+  get isAll () {
+    return this.list.every(item => item.isDone)
   }
 }
 export default TaskStore
