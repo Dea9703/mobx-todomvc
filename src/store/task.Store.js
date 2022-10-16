@@ -17,7 +17,8 @@ class TaskStore {
     makeAutoObservable(this)
   }
 
-  checkItem = (isDone, id) => {
+  // 单选操作
+  singleCheck = (isDone, id) => {
     const item = this.list.find(item => item.id === id)
     item.isDone = isDone
   }

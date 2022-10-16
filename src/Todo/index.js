@@ -7,7 +7,7 @@ function Task () {
 
   function onChange (e, id) {
     // console.log(e, id)
-    taskStore.checkItem(e.target.checked, id)
+    taskStore.singleCheck(e.target.checked, id)
   }
 
   return (
