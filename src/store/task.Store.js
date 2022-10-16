@@ -28,6 +28,7 @@ class TaskStore {
     this.list.forEach(item => item.isDone = isChecked)
   }
 
+  // 计算属性：只有当list所有子项都是选中的时候，才是全选状态
   get isAll () {
     return this.list.every(item => item.isDone)
   }
